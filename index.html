@@ -3,5 +3,5 @@ layout: homepage.html
 ---
 
 {% for notes in collections.notes %}
- <h3><a style="color: rgb(188, 186, 186); font-weight: bold; text-decoration: none;" href="{{ notes.url }}">{{ notes.data.title }}</a></h3>
+<h3><a href="{{ notes.url }}">{{ notes.data.title }}</a></h3>
 {% endfor %}
