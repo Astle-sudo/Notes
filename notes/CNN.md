@@ -1,4 +1,0 @@
----
-title: Convolutional Networks
----
-

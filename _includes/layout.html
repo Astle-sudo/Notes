@@ -6,20 +6,102 @@
     <title>Document</title>
     <style>
         body {
-            background-color: rgb(71, 71, 71);
-            color: white;
+            background-color: rgb(255, 255, 255);
+            color: rgb(145, 145, 145);
             font-weight: bold;
-            padding-top: 2%;
-            padding-left: 5%;
+            padding-top: 1%;
+            padding-left: 2%;
+        }
+        a {
+            color: rgb(145, 145, 145);
+        }
+
+        button {
+            margin-top: 10%;
+            outline: none;
+            border: none;
+            background-color: white;
+            color: rgb(145, 145, 145);
+            font-weight: bold;
+            border: 2px solid rgb(145, 145, 145);
+            padding: 1%;
+            border-radius: 5px;
+        }
+        button:hover {
+            cursor: pointer;
+            border: 2px solid rgb(255, 255, 255);
+            background-color: rgb(145, 145, 145);
+            color: rgb(255, 255, 255);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #backButton {
+            position: relative;
+            top: -20px;
+            left: -20px;
+            font-size: xx-large;
+            margin: 0;
+        }
+
+        #backButton:hover {
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 768px) {
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+            img {
+                width: auto;
+                height: auto;
+            }
+            #backButton {
+                top: -10px;
+                left: -10px;
+            }
         }
     </style>
 </head>
 <body>
+    <div id="backButton">
+        &larr;
+    </div>
     <h1>
         {{ title | default: "My Blog" }}
     </h1>
-    <main>
-        {{ content }}
-    </main>
+    <h3>
+        {{ description }}
+    </h3>
+    <div style="margin: 4%; display:flex;">
+        <img src="{{ image }}" width="600" height="600"> 
+        <main style="margin-left: 10%;">
+            {{ content }}
+            <button id="downloadButton" data-location="{{ image }}">Download Map</button>
+        </main>
+    </div>
 </body>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        let imageUrl = this.getAttribute('data-location')
+        let anchor = document.createElement('a');
+        anchor.download = 'downloaded_image.png';
+        anchor.href = imageUrl;
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+        alert("Downloaded Map!")
+    });
+    document.getElementById('backButton').addEventListener('click', function() {
+        let imageUrl = '/'
+        let anchor = document.createElement('a');
+        anchor.href = imageUrl;
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+    });
+</script>
 </html>

@@ -2,6 +2,9 @@
 layout: homepage.html
 ---
 
-{% for notes in collections.notes %}
-<h3><a href="{{ notes.url }}">{{ notes.data.title }}</a></h3>
+{% for src in collections.src %}
+<div id="block">
+    <div id="imgblock"><img src="{{ src.data.image }}" width="150" height="110"></div>
+    <div id="link"><a id="cardTitle" href="{{ src.url }}">{{ src.data.title }}</a></div>
+</div>
 {% endfor %}
