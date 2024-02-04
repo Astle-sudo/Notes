@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(255, 255, 255);
+            color: rgb(145, 145, 145);
+            font-weight: bold;
+            padding-top: 1%;
+            padding-left: 2%;
+        }
+        a {
+            color: rgb(145, 145, 145);
+        }
+
+        button {
+            margin-top: 10%;
+            outline: none;
+            border: none;
+            background-color: white;
+            color: rgb(145, 145, 145);
+            font-weight: bold;
+            border: 2px solid rgb(145, 145, 145);
+            padding: 1%;
+            border-radius: 5px;
+        }
+        button:hover {
+            cursor: pointer;
+            border: 2px solid rgb(255, 255, 255);
+            background-color: rgb(145, 145, 145);
+            color: rgb(255, 255, 255);
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #backButton {
+            position: relative;
+            top: -20px;
+            left: -20px;
+            font-size: xx-large;
+            margin: 0;
+        }
+
+        #backButton:hover {
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 768px) {
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+            img {
+                width: auto;
+                height: auto;
+            }
+            #backButton {
+                top: -10px;
+                left: -10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="backButton">
+        &larr;
+    </div>
+    <h1>
+        Point Set Topology
+    </h1>
+    <h3>
+        
+    </h3>
+    <div style="margin: 4%; display:flex;">
+        <img src="/static/T.png" width="600" height="600"> 
+        <main style="margin-left: 10%;">
+            <h2>Resources</h2>
+<ul>
+<li><a href="https://users.itk.ppke.hu/~vago/all-the-mathematics-you-missed.pdf"> All the math you missed, but need for graduate school </a></li>
+</ul>
+
+            <button id="downloadButton" data-location="/static/T.png">Download Map</button>
+        </main>
+    </div>
+</body>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        let imageUrl = this.getAttribute('data-location')
+        let anchor = document.createElement('a');
+        anchor.download = 'downloaded_image.png';
+        anchor.href = imageUrl;
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+        alert("Downloaded Map!")
+    });
+    document.getElementById('backButton').addEventListener('click', function() {
+        let imageUrl = '/'
+        let anchor = document.createElement('a');
+        anchor.href = imageUrl;
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+    });
+</script>
+</html>
